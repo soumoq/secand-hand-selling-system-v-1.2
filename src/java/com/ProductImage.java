@@ -4,6 +4,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.*;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -43,13 +44,15 @@ public class ProductImage extends HttpServlet {
             Con con = new Con();
             int i=con.sellNow(pName, pDetails, id, pPrice, image, imagePath);
             
-            out.println(pName);
-            out.println(pDetails);
-            out.println(id);
-            out.println(pPrice);
-            out.println(image);
-            out.println(imagePath);
-            out.println(i);
+           if(i!=0)
+           {
+               RequestDispatcher dispatcher=request.getRequestDispatcher("Home.jsp");
+               dispatcher.forward(request, response);
+           }
+           else
+           {
+               out.println("Somthing Went Wrong!!!");
+           }
             
 
         } catch (Exception e) {

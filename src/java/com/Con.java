@@ -7,8 +7,28 @@ public class Con {
 
     public static void main(String[] args) {
         Con con = new Con();
-        int i=con.sellNow("dirty", "LIC", 1, "456","455","/home/mr3o5/NetBeansProjects/Secand-hand-selling-system-in-JSP-master/web/image/Screenshot from 2019-08-05 09-03-14.png");
-        System.out.println("i"+i);
+        con.register("smrity banerjee", "sree714", "555", "123");
+    }
+
+    public int register(String name, String uName, String phone, String pass) {
+        int rs = 0;
+        try {
+            String dp = "";
+            String sql = "INSERT INTO `register` (`id`, `name`, `user_name`, `phone`, `password`, `dp`) VALUES (NULL, ?, ?, ?, ?, ?);";
+            Connection con = con();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, name);
+            ps.setString(2, uName);
+            ps.setString(3, phone);
+            ps.setString(4, pass);
+            ps.setString(5, dp);
+            rs = ps.executeUpdate();
+            return rs;
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return rs;
     }
 
     public List<Product> fatchProduct() {
@@ -22,14 +42,14 @@ public class Con {
                 String rName = rs.getString(1);
                 String rUname = rs.getString(2);
                 String rPhone = rs.getString(3);
-                int pId=rs.getInt(4);
-                String pName=rs.getString(5);
-                String pDetails=rs.getString(6);
-                String pPrice=rs.getString(7);
+                int pId = rs.getInt(4);
+                String pName = rs.getString(5);
+                String pDetails = rs.getString(6);
+                String pPrice = rs.getString(7);
 
-                Product product=new Product(pName,pDetails,pPrice,rName,rUname,rPhone,pId);
+                Product product = new Product(pName, pDetails, pPrice, rName, rUname, rPhone, pId);
                 items.add(product);
-                
+
             }
 
         } catch (Exception e) {
@@ -38,10 +58,10 @@ public class Con {
         return items;
     }
 
-    private String imageName="",imagePath="";
-    
-    public int sellNow(String pname, String pdetails, int rid, String pprice,String imageName,String imagePath) {
-        
+    private String imageName = "", imagePath = "";
+
+    public int sellNow(String pname, String pdetails, int rid, String pprice, String imageName, String imagePath) {
+
         String sql = "INSERT INTO `product` (`product_id`, `product_name`, `register_id`, `product_details`, `price`, `product_image`, `image_path`) VALUES (NULL, ?, ?, ?, ?, ?, ?);";
         try {
             Connection con = con();
@@ -50,7 +70,7 @@ public class Con {
             ps.setInt(2, rid);
             ps.setString(3, pdetails);
             ps.setString(4, pprice);
-            ps.setString(5,imageName);
+            ps.setString(5, imageName);
             ps.setString(6, imagePath);
             int rs = ps.executeUpdate();
             return rs;

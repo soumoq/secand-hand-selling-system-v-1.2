@@ -16,7 +16,7 @@ public class Login extends HttpServlet {
             String password = request.getParameter("pass");
             Con con = new Con();
             int i = con.login(username, password);
-            if (i == 1) {
+            if (i != 0) {
 
                 request.setAttribute("id", i);
                 RequestDispatcher rd = request.getRequestDispatcher("HomeLet");
