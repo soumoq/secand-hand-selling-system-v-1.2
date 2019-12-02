@@ -13,7 +13,7 @@
 
     <form action="register" method="post" >
         <div class="login-box">
-            <h1>register</h1>
+            <h1>Register</h1>
             <div class="textbox">
                 <i class="fas fa-user"></i>
                 <input type="text" placeholder="Full name" name="name">

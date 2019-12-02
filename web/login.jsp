@@ -21,7 +21,6 @@
                     <i class="fas fa-lock"></i>
                     <input type="password" placeholder="Password" name="pass">
                 </div>
-
                 <input type="submit" class="btn" value="Sign in" name="login">
                 <a href="register.jsp">Click here to register</a>
 
