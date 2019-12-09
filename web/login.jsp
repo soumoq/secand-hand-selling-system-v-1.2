@@ -25,6 +25,7 @@
                 <a href="register.jsp">Click here to register</a>
 
             </div>
+             <h3 style="color: red"> ${message}</h3>
         </form>
     </body>  
 </html>  
