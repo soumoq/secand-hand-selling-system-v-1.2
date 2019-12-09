@@ -1,3 +1,4 @@
 # Secand Hand Selling System
-this is a selling web site. With complete user varifaction and image upload to the database.
+This is a selling web site-
 * User valided through otp via email.
+* Selling product's image can upload. 
